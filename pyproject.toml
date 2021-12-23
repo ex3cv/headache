@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "headache"
+version = "0.1.0"
+description = "Simple http server printing just headers"
+authors = ["Remigiusz Świc <remigiusz@swic.net.pl>"]
+license = "GPLv3"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+flake8 = "^4.0.1"
+bandit = "^1.7.1"
+safety = "^1.10.3"
+mypy = "^0.930"
+black = "^21.12b0"
+pre-commit = "^2.16.0"
+coverage = "^6.2"
+isort = "^5.10.1"
+
+[tool.black]
+line-length = 120
+target-version = ['py39']
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.mypy_cache
+  | \.venv
+  | build
+  | dist
+  | ldist
+  | venv
+)/
+'''
+
+[tool.isort]
+profile = "black"
+src_paths = ["headache", "tests"]
+
+[tool.poetry.scripts]
+headache = "headache.__main__:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
